@@ -1,6 +1,9 @@
 Cutie - Sample
 ===============
 
+Sample website using Cutie framework
+
+
 Requirements
 ------------
 
@@ -38,9 +41,7 @@ Directory structure
 	    |
 	    └───Resource
 	        └───[Sub_Folder]
-	
 
--------------------------------------------------------------------
 
 File structure
 -----------------------------
@@ -117,9 +118,11 @@ Temporary interim files
 -----------------------
 	/Interim
 
+
 Rendered files
 --------------
 	/Publish
+
 
 Configuration
 -------------
@@ -134,7 +137,8 @@ root | - | - | 1 | root description
 item | - | - | 0 | item description
 folder | - | - | - | folder description
 folder/item | - | - | - | folder's item description
-	
+
+
 Menu
 ----
 	
@@ -144,7 +148,6 @@ Menu
 		group_text($SIDEBAR_NAV_GROUP, $MENU_MAX_ITEM_COUNT, ['first', 'First_title'], ['second', 'Second_title']);
 		
 #### Image
-
 		group_image($SIDEBAR_NAV_GROUP, $MENU_MAX_ITEM_COUNT, ['root', '']);
 		
 
@@ -153,6 +156,7 @@ Content
 
 #### Image
 		<?php $alt="<Folder's item's cover image's description>"; require('Fragment\Component_cover.php') ?>
+
 
 Nav menu
 --------
