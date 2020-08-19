@@ -1,0 +1,49 @@
+DirectoryIndex Framework/HTML/Page.php
+
+ErrorDocument 404 "Error: 404. Page Not Found! :("
+
+RewriteBase /
+RewriteEngine On
+DirectorySlash Off
+
+RewriteRule ^(.+)/$ $1 [R=301]
+
+RewriteRule ^style.css$ Framework/CSS/Style.php [L]
+RewriteRule ^script.js$ Framework/JS/Script.php [L]
+
+RewriteRule ^manifest\.json$ /Framework/Files/Manifest.json.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)\.js$ Framework/JS/Link/$1.js [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)\.ico$ Resource/$1.ico [L]
+
+RewriteCond %{DOCUMENT_ROOT}/Resource/$1 -d
+RewriteRule ^(.*?)\.jpg$ Resource/$1/index.jpg [R=302,L]
+
+RewriteCond %{DOCUMENT_ROOT}/Resource/$1 -d
+RewriteRule ^(.*?)\.svg$ Resource/$1/index.svg [R=302,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)\.jpg$ Resource/$1.jpg [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)\.png$ Resource/$1.png [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)\.svg$ Resource/$1.svg [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/File%{REQUEST_URI} -f
+RewriteRule ^(.+)$ file/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/Site%{REQUEST_URI} -f
+RewriteRule ^(.+)$ site/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*?)\.json$ Framework/HTML/Component.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ Framework/HTML/Page.php [L]
