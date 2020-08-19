@@ -1,4 +1,4 @@
-Cutie - Website
+Cutie - Sample
 ===============
 
 Requirements
