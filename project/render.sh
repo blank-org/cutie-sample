@@ -2,7 +2,7 @@
 
 /app/tiggu/build.sh /app/site/project
 
-cd /app
+cd /app || exit
 
 shopt -s extglob
 copy_dot_dirs() {

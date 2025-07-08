@@ -1,13 +1,14 @@
+---
 services:
   firebase:
     entrypoint:
-    - sleep
-    - infinity
+      - sleep
+      - infinity
     image: node:20.11-slim
     init: true
     volumes:
-    - ../project/build:/app
-    - type: bind
-      source: /var/run/docker.sock
-      target: /var/run/docker.sock
+      - ../project/build:/app
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
     build: ./

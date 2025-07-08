@@ -1,3 +1,4 @@
+---
 services:
 
   web-site:
@@ -14,7 +15,7 @@ services:
       - "local.cutie.codes:127.0.0.1"
       - "interim.cutie.codes:127.0.0.1"
       - "public.cutie.codes:127.0.0.1"
-    #restart: always
+    # restart: always
     networks:
       dan:
         ipv4_address: 10.8.0.2
@@ -35,13 +36,13 @@ services:
       - "443:443"
     depends_on:
       - web-site
-    #restart: always
+    # restart: always
     networks:
       - dan
-      
+
 networks:
   dan:
     driver: bridge
     ipam:
-     config:
-       - subnet: 10.8.0.0/24
+      config:
+        - subnet: 10.8.0.0/24
