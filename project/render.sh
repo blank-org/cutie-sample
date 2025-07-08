@@ -11,7 +11,7 @@ copy_dot_dirs() {
   
   shopt -s extglob
 
-  cp -r $source_dir/* $dest_dir
+  cp -r "$source_dir"/* "$dest_dir"
   for dir in "$source_dir"/.!(.|git); do
     if [ -d "$dir" ] || [ -f "$dir" ]; then
       cp -r "$dir" "$dest_dir"
