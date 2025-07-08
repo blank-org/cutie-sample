@@ -9,7 +9,7 @@
 
 - local.wolo.codes - 127.0.0.1
 
-## Project stcuture
+## Project structure
 
 ```
 Web
