@@ -42,6 +42,15 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{DOCUMENT_ROOT}/Site%{REQUEST_URI} -f
 RewriteRule ^(.+)$ site/$1 [L]
 
+# Language-prefixed JSON (AJAX component loading)
+RewriteRule ^([a-z]{2}(?:-[a-z]{2})?)/(.+?)\.json$ Framework/HTML/Component.php [L]
+
+# Language-prefixed pages
+RewriteRule ^([a-z]{2}(?:-[a-z]{2})?)/(.+)$ Framework/HTML/Page.php [L]
+
+# Language root (e.g. /hi)
+RewriteRule ^([a-z]{2}(?:-[a-z]{2})?)$ Framework/HTML/Page.php [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*?)\.json$ Framework/HTML/Component.php [L]
 

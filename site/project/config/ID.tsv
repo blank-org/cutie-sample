@@ -1,2 +1,5 @@
-Id	Label	Title	JS	Description
+Id	Label	Title	JS	Description	Type
 root	TITLE	Title	1	Title_description
+hello-world	Hello world!	Hello world!	0	Hello world article	article
+placeholder-article-one	Placeholder article one	Placeholder article one	0	First placeholder article	article
+placeholder-article-two	Placeholder article two	Placeholder article two	0	Second placeholder article	article

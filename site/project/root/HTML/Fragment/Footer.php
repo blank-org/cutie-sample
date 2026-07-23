@@ -20,8 +20,9 @@
 			<a class='content-link-gray XURL' href='/license' data-target='license' data-title='License'>Some rights reserved</a>
 		</div>
 		<div class='footer-content'>
-			<a class="content-link-gray XURL" href='/license' data-target='license' data-title='License'>Copyright &copy; 2020</a>
+			<a class="content-link-gray XURL" href='/license' data-target='license' data-title='License'>Copyright &copy; <span id='footer-year'><?php echo date('Y'); ?></span></a>
 			<a class="content-link XURL" href='/about_' data-target='about_' data-title='About _'>_</a><a class='content-link' target='_blank' href='/about_' rel='author'></a>
 		</div>
 	</div>
 </div>
+<script>(function(){var year=document.getElementById('footer-year');if(year)year.textContent=new Date().getFullYear();}());</script>

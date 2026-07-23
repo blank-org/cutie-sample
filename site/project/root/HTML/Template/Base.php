@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns='http://www.w3.org/1999/xhtml' lang='en' itemscope='' itemtype='http://schema.org/WebPage'>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='<?php echo $lang ?>' itemscope='' itemtype='http://schema.org/WebPage'>
+<script>(function(){try{var t=localStorage.getItem('cutie-dark-mode');t=t==='true'?'dark':t==='false'?'light':t;if(t!=='system'&&t!=='light'&&t!=='dark')t='system';var r=t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':t==='system'?'light':t;document.documentElement.setAttribute('data-theme-preference',t);document.documentElement.setAttribute('data-theme-resolved',r);if(r==='dark')document.documentElement.classList.add('dark-mode');document.documentElement.style.colorScheme=r}catch(e){document.documentElement.setAttribute('data-theme-preference','system');document.documentElement.setAttribute('data-theme-resolved','light')}})()</script>
 <head>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge' >
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' >
@@ -14,7 +15,8 @@
 	<link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' >
 	<link rel='apple-touch-icon' type='image/png' href='/apple-touch-icon.png' >
 	<link rel='manifest' href='/manifest.json' >
-	<link href="<?php echo $config['base_url']; if($id != 'root') echo '/'.$id ?>" rel='canonical' >
+	<link href="<?php echo $config['base_url']; if($lang !== 'en') echo '/'.$lang; if($id != 'root') echo '/'.$id ?>" rel='canonical' >
+	<?php require '../HTML/Fragment/Hreflang_meta.php' ?>
 	<title><?php echo $desc.' - '.$config['project_title']; ?></title>
 <?php if($bPublish) {
 		require '../JS/Fragment/GA_HeadScript.php';
@@ -44,11 +46,20 @@
 				<div class='container'>
 					<div id='content-wrapper-inside'>
 						<div class='shadow-scroll-top'></div>
+						<?php require '../HTML/Fragment/LanguageSwitcher.php' ?>
 						<div id='google_translate_element'></div>
 						<?php require '../HTML/Fragment/GCSE.php' ?>
 						<div id='canvas-wrapper'>
 							<div id='path-container' class="<?php echo ($id == 'root'? 'hide_scale' : '') ?>"><div id='path'><?php require '../HTML/Fragment/Path.php' ?></div></div>
-							<div id='title-container' class="<?php echo ($id == 'root'? 'hide_scale' : '') ?>"><h1 id='title'><?php echo ($id == 'root'? '&nbsp;' : $label) ?></h1></div>
+							<?php
+								$prev_article_id = getPrevArticleId($id);
+								$next_article_id = getNextArticleId($id);
+							?>
+							<div id='title-container' class="<?php echo ($id == 'root'? 'hide_scale' : '') ?>">
+								<a id='article-prev' class='article-title-nav XURL<?php echo ($prev_article_id == ''? ' article-title-nav-disabled' : '') ?>' <?php if($prev_article_id != '') { ?>href='<?php echo getComponentURL($prev_article_id) ?>' data-target='<?php echo $prev_article_id ?>' data-title='<?php echo getComponentLabel($prev_article_id) ?>' title='Previous article' aria-label='Previous article' tabindex='0'<?php } else { ?>aria-label='No previous article' aria-disabled='true' tabindex='-1'<?php } ?>><span class='image'><?php includeSVG('', 'Caret_left'); ?></span></a>
+								<h1 id='title'><?php echo ($id == 'root'? '&nbsp;' : $label) ?></h1>
+								<a id='article-next' class='article-title-nav XURL<?php echo ($next_article_id == ''? ' article-title-nav-disabled' : '') ?>' <?php if($next_article_id != '') { ?>href='<?php echo getComponentURL($next_article_id) ?>' data-target='<?php echo $next_article_id ?>' data-title='<?php echo getComponentLabel($next_article_id) ?>' title='Next article' aria-label='Next article' tabindex='0'<?php } else { ?>aria-label='No next article' aria-disabled='true' tabindex='-1'<?php } ?>><span class='image'><?php includeSVG('', 'Caret_right'); ?></span></a>
+							</div>
 							<div id='canvas-wrapper-inner-container'>
 								<?php require '../../HTML/Fragment/Menu.php'; ?>
 								<div id='canvas-main'>
